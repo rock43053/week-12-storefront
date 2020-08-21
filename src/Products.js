@@ -4,15 +4,19 @@ class Products extends React.Component {
     constructor () {
         super()
         this.state = {
-            results: []
+            response: []
         }
     }
 
+
+    
     componentDidMount() {
         this.callApi()
-        .then(res => this.setState({ response: res.express }))
+        .then(response => this.setState({ response: response.length + 'items found' }))
         .catch(err => console.log(err));
     }
+    
+    
     
     callApi = async () => {
         const response = await fetch('http://localhost:3001/products');
